@@ -6,9 +6,9 @@ This repository contains the official implementation of our **WACV 2026** paper:
 
 > **ACuRE: Accurate Continuity-Regularized SpO₂ Estimation Using Liquid Time-Constant Networks**
 
-<p align="center">
+<!-- <p align="center">
   <img src="docs/figure1_framework.png" width="90%">
-</p>
+</p> -->
 
 ---
 
