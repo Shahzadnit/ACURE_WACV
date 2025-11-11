@@ -32,9 +32,9 @@ It combines **AC/DC component separation**, **3D spatiotemporal feature extracti
   <img src="docs/figure1_framework.png" width="90%">
 </p>
 
-> **Figure:** Overview of ACuRE framework for SpO₂ estimation.
+<!-- > **Figure:** Overview of ACuRE framework for SpO₂ estimation.
 > The pipeline includes AC/DC feature extraction via 3D convolutions,
-> physics-informed regularization, and temporal dynamics modeled with LTC.
+> physics-informed regularization, and temporal dynamics modeled with LTC. -->
 
 ---
 
@@ -44,7 +44,7 @@ It combines **AC/DC component separation**, **3D spatiotemporal feature extracti
   <img src="docs/figure_results_comparison.png" width="90%">
 </p>
 
-> **Figure:** Comparison of ground truth (orange) and predicted (blue) SpO₂ values across datasets.
+<!-- > **Figure:** Comparison of ground truth (orange) and predicted (blue) SpO₂ values across datasets. -->
 
 ---
 
