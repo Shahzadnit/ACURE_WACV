@@ -14,14 +14,15 @@ This repository contains the official implementation of our **WACV 2026** paper:
 
 ## 📄 Paper Overview
 
-The **ACuRE** framework introduces a **physics-informed and physiology-inspired** pipeline for accurate and robust **SpO₂ estimation from facial videos**.  
+The **ACuRE** framework introduces a **physics-informed and physiology-inspired** pipeline for accurate and robust **SpO₂ estimation from facial videos**.
 It combines **AC/DC component separation**, **3D spatiotemporal feature extraction**, and **Liquid Time-Constant (LTC)**-based temporal modeling, guided by **continuity regularization** via a **physics-informed PDE loss**.
 
 ### 🧩 Key Highlights
-- **AC/DC Decomposition:** Physiologically interpretable signal separation from facial video.  
-- **Physics-Informed Regularization:** Enforces **continuity constraints** (∂ρ/∂t + ∇·(ρv) = 0) for temporal consistency.  
-- **LTC Dynamics:** Recurrent ODE-based layer for adaptive temporal modeling.  
-- **Robust Estimation:** Outperforms state-of-the-art methods on **PURE**, **BH-rPPG**, and **VIPL-HR** datasets.
+
+* **AC/DC Decomposition:** Physiologically interpretable signal separation from facial video.
+* **Physics-Informed Regularization:** Enforces **continuity constraints** (∂ρ/∂t + ∇·(ρv) = 0) for temporal consistency.
+* **LTC Dynamics:** Recurrent ODE-based layer for adaptive temporal modeling.
+* **Robust Estimation:** Outperforms state-of-the-art methods on **PURE**, **BH-rPPG**, and **VIPL-HR** datasets.
 
 ---
 
@@ -31,8 +32,8 @@ It combines **AC/DC component separation**, **3D spatiotemporal feature extracti
   <img src="docs/figure_framework_overview.png" width="90%">
 </p>
 
-> **Figure:** Overview of ACuRE framework for SpO₂ estimation.  
-> The pipeline includes AC/DC feature extraction via 3D convolutions,  
+> **Figure:** Overview of ACuRE framework for SpO₂ estimation.
+> The pipeline includes AC/DC feature extraction via 3D convolutions,
 > physics-informed regularization, and temporal dynamics modeled with LTC.
 
 ---
@@ -68,3 +69,19 @@ If you find this work useful, please cite:
   booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
   year={2026}
 }
+```
+
+---
+
+## 🚀 Code Release
+
+The code and pretrained models will be **released soon**.
+Stay tuned for updates!
+
+---
+
+## 🏛️ Acknowledgements
+
+This work was conducted at **Østfold University** in collaboration with **NTNU**, Norway.
+We thank the authors of PURE, BH-rPPG, and VIPL-HR datasets for making their data publicly available.
+
