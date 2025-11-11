@@ -29,7 +29,7 @@ It combines **AC/DC component separation**, **3D spatiotemporal feature extracti
 ## 🧪 Framework Overview
 
 <p align="center">
-  <img src="docs/figure_framework_overview.png" width="90%">
+  <img src="docs/figure1_framework.png" width="90%">
 </p>
 
 > **Figure:** Overview of ACuRE framework for SpO₂ estimation.
