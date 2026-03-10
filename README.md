@@ -58,6 +58,23 @@ It combines **AC/DC component separation**, **3D spatiotemporal feature extracti
 
 ---
 
+## Training and Evaluation for PURE
+```
+python PURE/main_fold_PURE_bb_abl_physnet.py
+
+python PURE/evaluation_folds_bb.py
+
+```
+
+
+## Training and Evaluation for Bh-rPPG
+```
+python BHRPPG/main_fold_BHRPPG_bb_abl_physent.py
+
+python BHRPPG/evaluation_folds_bb.py
+
+```
+
 ## 📚 Citation
 
 If you find this work useful, please cite:
