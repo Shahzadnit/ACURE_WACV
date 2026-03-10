@@ -1,8 +1,10 @@
 # 🫀 ACuRE: Accurate Continuity-Regularized SpO₂ Estimation Using Liquid Time-Constant Networks
 
-### 🧠 Accepted at **WACV 2026**
+> ## 🏆 **Accepted as Oral at WACV 2026**
+> ## 📄 **Paper:** [ACuRE: Accurate Continuity-Regularized SpO₂ Estimation Using Liquid Time-Constant Networks](https://openaccess.thecvf.com/content/WACV2026/papers/Ahmad_ACuRE_Accurate_Continuity-Regularized_SpO2_Estimation_Using_Liquid_Time-Constant_Networks_WACV_2026_paper.pdf)
 
-This repository contains the official implementation of our **WACV 2026** paper:
+This repository contains the official implementation of our **WACV 2026 Oral** paper.
+
 
 <!-- > **ACuRE: Accurate Continuity-Regularized SpO₂ Estimation Using Liquid Time-Constant Networks** -->
 
