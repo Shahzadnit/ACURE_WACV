@@ -80,12 +80,13 @@ python BHRPPG/evaluation_folds_bb.py
 If you find this work useful, please cite:
 
 ```bibtex
-@inproceedings{ahmad2026acure,
-  title={ACuRE: Accurate Continuity-Regularized SpO₂ Estimation Using Liquid Time-Constant Networks},
-  author={Ahmad, Shahzad and Mishra, Divya and Bano, Sania and Chanda, Sukalpa and Rawat, Yogesh Singh},
-  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
-  year={2026},
-  organization={IEEE}
+@InProceedings{Ahmad_2026_WACV,
+    author    = {Ahmad, Shahzad and Mishra, Divya and Bano, Sania and Chanda, Sukalpa and Rawat, Yogesh Singh},
+    title     = {ACuRE: Accurate Continuity-Regularized SpO2 Estimation Using Liquid Time-Constant Networks},
+    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {March},
+    year      = {2026},
+    pages     = {7250-7259}
 }
 
 ```
