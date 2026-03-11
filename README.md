@@ -60,21 +60,83 @@ It combines **AC/DC component separation**, **3D spatiotemporal feature extracti
 
 ---
 
-## Training and Evaluation for PURE
+## 📦 Data Pre-processing
+
+All training/testing scripts expect preprocessed `.npz` files with:
+* `video`: spatio-temporal face crop sequence
+* `wave`: synchronized SpO2 signal
+* `fps`: frame rate
+
+### 1) PURE
+1. Open `data_preprocesing/PURE.py` and set:
+   * `video_dir` (PURE videos)
+   * `json_dir` (PURE JSON labels)
+   * `output_dir` (where `.npz` files are saved)
+   * `image_dir` (optional visualization output)
+2. Run:
+
+```bash
+python data_preprocesing/PURE.py
 ```
-python PURE/main_fold_PURE_bb_abl_physnet.py
 
-python PURE/evaluation_folds_bb.py
+### 2) BH-rPPG
+Run preprocessing with input/output paths:
 
+```bash
+python data_preprocesing/BH_rPPG.py \
+  --input /path/to/BH-rPPG_raw \
+  --output /path/to/Bh_rPPG_dataset
 ```
 
+### 3) VIPL-HR
+Run preprocessing with input/output paths:
 
-## Training and Evaluation for Bh-rPPG
+```bash
+python data_preprocesing/VIPLR.py \
+  --input /path/to/VIPL-HR_raw \
+  --output /path/to/VIPLR_data_video
 ```
-python BHRPPG/main_fold_BHRPPG_bb_abl_physent.py
 
-python BHRPPG/evaluation_folds_bb.py
+---
 
+## 🚀 Training and Testing (Per Dataset)
+
+Before running each script, update dataset/result paths in the `if __name__ == "__main__":` block at the bottom of that file.
+
+### PURE
+
+```bash
+# Train (5-fold)
+python PURE/PURE_training.py
+
+# Test using saved best weights
+python PURE/PURE_test.py
+
+# Optional conditional evaluation split
+python PURE/PURE_conditional_eval.py
+```
+
+### BH-rPPG
+
+```bash
+# Train (5-fold)
+python BHRPPG/BHRPPG_training.py
+
+# Test using saved best weights
+python BHRPPG/BHRPPG_test.py
+
+# Optional conditional evaluation split
+python BHRPPG/BHRPPG_conditional_eval.py
+```
+
+### VIPL-HR
+
+```bash
+# Train (5-fold)
+python VIPLR/VIPLR_training.py
+
+# Test using saved best weights
+python VIPLR/VIPLR_testing.py
 ```
 
 ## 📚 Citation
@@ -99,4 +161,3 @@ If you find this work useful, please cite:
 
 This work was conducted at **Østfold University** in collaboration with **UCF**.
 We thank the authors of PURE, BH-rPPG, and VIPL-HR datasets for making their data publicly available.
-
