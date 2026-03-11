@@ -12,10 +12,7 @@ from Loss import  SpO2Loss
 from dataset import train_dataset, test_dataset
 from utils import *
 from torchvision import transforms
-import torch
 from torch.utils.data import Dataset
-import numpy as np
-import os
 import torchvision.transforms.functional as TF
 import random
 
