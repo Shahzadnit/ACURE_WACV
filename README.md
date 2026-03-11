@@ -60,22 +60,88 @@ It combines **AC/DC component separation**, **3D spatiotemporal feature extracti
 
 ---
 
-## Training and Evaluation for PURE
+## 🧹 Data Pre‑processing
+
+Our pipeline crops faces with Mediapipe landmarks, stacks RGB+HSV+HLS+Lab channels, rescales frames to **32×32**, resamples SpO₂/PPG to video length, and drops clips with noisy GT (<90 or >100). Each script saves compressed `.npz` files with `video`, `wave`, and `fps` fields used by `dataset.py`.
+
+### PURE → `Dataset/Pure_data_video`
+- Prepare paired video `.mp4` and JSON (`/FullPackage` oximeter) files.
+- Run (edit paths as needed):
+```bash
+python - <<'PY'
+from data_preprocesing.PURE import preprocess_and_save_spatio_temporal_maps
+preprocess_and_save_spatio_temporal_maps(
+    video_dir="/path/to/PURE_videos",        # *.mp4
+    json_dir="/path/to/PURE_json",           # matching *.json
+    output_dir="Dataset/Pure_data_video",    # destination inside repo
+    image_dir="Dataset/PURE_preview_png"     # optional previews
+)
+PY
 ```
-python PURE/main_fold_PURE_bb_abl_physnet.py
 
-python PURE/evaluation_folds_bb.py
-
+### BH-rPPG → `Dataset/Bh_rPPG_dataset`
+- Point `--input` to the raw BH-rPPG release root (each session has `sensor.csv` + `*.avi`).
+- Run:
+```bash
+python data_preprocesing/BH_rPPG.py \
+  --input /path/to/Pub_BH-rPPG_FULL_compack \
+  --output Dataset/Bh_rPPG_dataset
 ```
 
-
-## Training and Evaluation for Bh-rPPG
+### VIPLR → `Dataset/VIPLR_data_video`
+- Provide the VIPL-Raw tree (skip infrared `source4` is handled automatically).
+- Run:
+```bash
+python data_preprocesing/VIPLR.py \
+  --input /path/to/VIPLR_zip_data \
+  --output Dataset/VIPLR_data_video
 ```
-python BHRPPG/main_fold_BHRPPG_bb_abl_physent.py
 
-python BHRPPG/evaluation_folds_bb.py
+> Tip: If your data lives elsewhere, adjust the `map_dir` variables at the bottom of each training/testing script to point to your `.npz` folders.
 
+---
+
+## 🚀 Train & Test
+All scripts perform **5-fold subject-wise CV** with LTC temporal blocks and save weights/plots under `results/<DATASET>_res/`.
+
+### PURE
+- **Train:**
+```bash
+python PURE/PURE_training.py
 ```
+  - expects `Dataset/Pure_data_video` (edit `map_dir` if different)
+  - outputs to `results/PURE_res/{PURE_weight, PURE_Plots_eval, PURE_checkpoints}`
+- **Test (uses saved fold weights):**
+```bash
+python PURE/PURE_test.py
+```
+  - set `map_dir` and `base_model_save_path` in the script to your locations before running.
+
+### BH-rPPG
+- **Train:**
+```bash
+python BHRPPG/BHRPPG_training.py
+```
+  - uses `Dataset/Bh_rPPG_dataset`
+  - saves to `results/BHRPPG_res/{BHRPPG_weight, BHRPPG_Plots_eval, BHRPPG_checkpoints}`
+- **Test:**
+```bash
+python BHRPPG/BHRPPG_test.py
+```
+  - expects the same dataset path and the weights above.
+
+### VIPLR (VIPL-HR)
+- **Train:**
+```bash
+python VIPLR/VIPLR_training.py
+```
+  - uses `Dataset/VIPLR_data_video`
+  - saves to `results/VIPLR_res/{VIPLR_weight, VIPLR_Plots_eval, VIPLR_checkpoints}`
+- **Test:**
+```bash
+python VIPLR/VIPLR_testing.py
+```
+  - loads weights from `results/VIPLR_res/VIPLR_weight` by default.
 
 ## 📚 Citation
 
@@ -99,4 +165,3 @@ If you find this work useful, please cite:
 
 This work was conducted at **Østfold University** in collaboration with **UCF**.
 We thank the authors of PURE, BH-rPPG, and VIPL-HR datasets for making their data publicly available.
-
